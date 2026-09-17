@@ -51,7 +51,6 @@ function uploadToCloudinary(file) {
     const uploadStream = cloudinary.uploader.upload_stream(
       {
         folder: "zubstudio/products",
-
         resource_type: "image",
       },
 
@@ -62,7 +61,6 @@ function uploadToCloudinary(file) {
 
         resolve({
           url: result.secure_url,
-
           publicId: result.public_id,
         });
       },
@@ -158,7 +156,6 @@ router.get(
    - Price is required
    - Code is OPTIONAL
    - Description is OPTIONAL
-   - Category is optional
    - Duplicate codes ARE ALLOWED
    - No duplicate-code check
    - Images go to Cloudinary
@@ -185,7 +182,7 @@ router.post(
     const uploadedImages = [];
 
     try {
-      const { name, code, price, category, description, status } = req.body;
+      const { name, code, price, description, status } = req.body;
 
       /* =====================================================
          CLEAN VALUES
@@ -194,8 +191,6 @@ router.post(
       const cleanName = name?.trim();
 
       const cleanCode = code?.trim();
-
-      const cleanCategory = category?.trim();
 
       const cleanDescription = description?.trim();
 
@@ -263,8 +258,6 @@ router.post(
         name: cleanName,
 
         price: numericPrice,
-
-        category: cleanCategory || "Other",
 
         images: uploadedImages,
 
@@ -367,7 +360,6 @@ router.patch(
 
         {
           new: true,
-
           runValidators: true,
         },
       );
@@ -413,7 +405,6 @@ router.patch(
 
         {
           new: true,
-
           runValidators: true,
         },
       );

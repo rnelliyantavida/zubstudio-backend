@@ -67,28 +67,6 @@ const productSchema = new mongoose.Schema(
     },
 
     /* -----------------------------------------------------
-       CATEGORY
-
-       Examples:
-
-       Sets
-       Kurtas
-       Sarees
-       Abayas
-       Dresses
-       Churidars
-
-       New categories can be added
-       without changing this schema.
-    ----------------------------------------------------- */
-
-    category: {
-      type: String,
-      trim: true,
-      default: "Other",
-    },
-
-    /* -----------------------------------------------------
        DESCRIPTION
 
        OPTIONAL because some supplier
@@ -160,10 +138,6 @@ const productSchema = new mongoose.Schema(
 
 productSchema.index({
   createdAt: -1,
-});
-
-productSchema.index({
-  category: 1,
 });
 
 /* =========================================================
